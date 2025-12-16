@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Ponderings{% endblock %}
+
+{% block content %}
+    <div class="pondering">
+        <blockquote>
+            <p>"{{ pondering.content }}"</p>
+        </blockquote>
+        <p class="author">— {{ pondering.author }}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
+    </div>
+{% endblock %}

@@ -4,8 +4,9 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.forms import AuthenticationForm
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser
+from accounts.forms import CustomUserCreationForm, CustomUserChangeForm
+from accounts.models import CustomUser
+from ponderings.models import Pondering
 
 
 class UsernameOrEmailAuthenticationForm(AuthenticationForm):
@@ -50,3 +51,4 @@ class CustomUserAdmin(UserAdmin):
 admin_site = CustomAdminSite(name='customadmin')
 admin_site.register(Group, GroupAdmin)
 admin_site.register(CustomUser, CustomUserAdmin)
+admin_site.register(Pondering)

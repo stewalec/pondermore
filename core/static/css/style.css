@@ -1,0 +1,208 @@
+/*
+* Palette: https://coolors.co/palette/edae49-d1495b-00798c-30638e-003d5b
+*/
+body {
+	background:#fff;
+	font-family: nunito-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	color: #333;
+	max-width: 50em;
+	margin: auto;
+	padding: 1em;
+}
+
+nav {
+	margin-left: 5em;
+}
+
+nav form button {
+	color: inherit;
+	background-color: inherit;
+	padding: 0;
+}
+nav form button:hover {
+	color: #999;
+}
+
+.container {
+	display: flex;
+}
+.col-70 {
+	flex: 70%;
+}
+.col-30 {
+	flex: 30%;
+}
+
+.col-30 form {
+	width: 100%;
+}
+
+header {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: baseline;
+}
+header h1 {
+	font-size: 1.25em;
+}
+header a {
+	text-decoration: none;
+	color: #333;
+}
+header a:hover {
+	color: #999;
+}
+
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.inline {
+	margin: 0;
+	padding: 0;
+}
+.inline li {
+	display: inline-block;
+}
+.inline li:not(:last-child)::after {
+	content: " \00B7 ";
+}
+
+.pondering {
+	font-size: 0.8em;
+	text-align: left;
+	border: 1px solid #333;
+	margin: 1em 2em 0 0;
+	padding: 1.2em 30px;
+}
+.pondering .author {
+	text-align: right;
+	font-weight: bold;
+}
+.pondering blockquote {
+	margin-left: 0;
+	margin-right: 0;
+}
+.pondering .inline {
+	font-size: 0.9em;
+}
+.pondering .inline a {
+	color: #333;
+}
+.pondering .inline a:hover {
+	color: #999;
+}
+
+.public {
+	margin: 4em auto 0 auto;
+	width: 60%;
+}
+.public.pondering a {
+	color: #333;
+}
+.public.pondering a:hover {
+	color: #999;
+}
+
+.active {
+	border-bottom: 1px solid #333;
+}
+
+.search {
+	margin-top: 1em;
+}
+
+.main-heading {
+	font-style: italic;
+	border-bottom: 2px solid #333;
+}
+
+button,
+.btn {
+	color: #eee;
+	background-color: #30638e;
+	padding: 0.5rem;
+	border-radius: 3px;
+	text-decoration: none;
+}
+button:hover,
+.btn:hover {
+	opacity: 0.75;
+}
+.cancel {
+	background-color: #fff;
+	color: #000;
+	border: 1px solid #000;
+	float: right;
+}
+.danger {
+	background-color: #d1495b;
+}
+
+.time {
+	font-style: italic;
+}
+
+.add {
+	display: inline-block;
+	margin-top: 0.8em;
+}
+
+form {
+	width: 60%;
+}
+
+.form-group {
+	margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #30638e;
+}
+
+#id_private {
+	width: revert;
+}
+
+.centered {
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+	.centered form {
+		width: 80%
+	}
+  .container {
+    flex-direction: column-reverse;
+  }
+  .pondering {
+	margin: 1em 0 0 0;
+  }
+}

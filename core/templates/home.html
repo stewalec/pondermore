@@ -3,15 +3,47 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-Hi {{ user.username }}!
-<form action="{% url 'logout' %}" method="post">
-  {% csrf_token %}
-  <button type="submit">Log Out</button>
-</form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a>
-<a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
+    {% if user.is_authenticated %}
+        <h1 class="main-heading">Activity Feed</h1>
+        <div class="container">
+            <div class="col-70">
+                {% if ponderings %}
+                    {% for pondering in ponderings %}
+                        <div class="pondering">
+                            <blockquote>
+                                <p>{{ pondering.content }}</p>
+                            </blockquote>
+                            <p class="author">{% if pondering.author %}— {{ pondering.author }}{% endif %}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
+                            <span class="time" title="{{ pondering.created_at | date:'r' }}">{{ pondering.created_at | timesince }} ago</span>
+                            <ul class="inline">
+                                <li><a href="{% url 'ponderings:pondering-edit' pondering.id %}">Edit</a></li>
+                                <li><a href="#">Save</a></li>
+                                <li><a href="#">Notes</a></li>
+                            </ul>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No ponderings are available.</p>
+                {% endif %}
+            </div>
+            <div class="col-30">
+                <input class="search" type="text" placeholder="Search for words or #tags">
+            </div>
+        </div>
+    {% else %}
+        <h1 class="main-heading">Public Ponderings</h1>
+        {% if ponderings %}
+            {% for pondering in ponderings %}
+                <div class="public pondering">
+                    <blockquote>
+                        <p>{{ pondering.content }}</p>
+                    </blockquote>
+                    <p class="author">{% if pondering.author %}— {{ pondering.author }}{% endif %}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
+                    <p class="time"><span title="{{ pondering.created_at | date:'r' }}">{{ pondering.created_at | timesince }} ago</span> by <a href="#">{{ pondering.user.username }}</a></p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No public ponderings are available.</p>
+        {% endif %}
+    {% endif %}
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Ponderings{% endblock %}
+
+{% block content %}
+    <div class="centered">
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure you want to delete the following pondering?</p>
+            <p>{{ object }}</p>
+            {{ form }}
+            <button class="danger btn" type="submit">Delete</button>
+            <a class="cancel btn" style="float:none;" href="{% url 'ponderings:pondering-index' %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

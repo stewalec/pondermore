@@ -1,15 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <meta charset="utf-8">
-  <title>{% block title %}Pondermore{% endblock %}</title>
+  <title>{% block title %}{% endblock %} &mdash; Pondermore</title>
 </head>
 
 <body>
+  <header>
+    <h1><a href="{% url 'home' %}">Pondermore</a></h1>
+    <nav>
+      <ul class="inline">
+        {% if user.is_authenticated %}
+          <li><a class="{% if '/ponderings' in request.path %}active{% endif %}" href="{% url 'ponderings:pondering-index' %}">Ponderings</a></li>
+          <li><a class="{% if '/settings' in request.path %}active{% endif %}" href="#">Settings</a></li>
+          <li>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class="logout" type="submit">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a class="{% if '/login' in request.path %}active{% endif %}" href="{% url 'login' %}">Login</a></li>
+          <li><a class="{% if '/signup' in request.path %}active{% endif %}" href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    {% block content %}
-    {% endblock %}
+      {% block content %}
+      {% endblock %}
   </main>
 </body>
 

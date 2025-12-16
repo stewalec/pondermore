@@ -18,9 +18,9 @@ class UsernameOrEmailBackend(ModelBackend):
             return user
         return None
 
-    def get_user(self, user_id):
+    def get_user(self, user):
         UserModel = get_user_model()
         try:
-            return UserModel.objects.get(pk=user_id)
+            return UserModel.objects.get(pk=user)
         except UserModel.DoesNotExist:
             return None

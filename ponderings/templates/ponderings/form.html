@@ -3,14 +3,14 @@
 {% block title %}Ponderings{% endblock %}
 
 {% block content %}
-    <div class="centered">
+    <div>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Save</button>
-            <a class="cancel btn" style="float:none;" href="{% url 'ponderings:pondering-index' %}">Cancel</a>
+            <a class="button" href="{% url 'ponderings:pondering-index' %}">Cancel</a>
             {% if form.instance.id %}
-            <a class="danger btn" style="float:right;" href="{% url 'ponderings:pondering-delete' form.instance.id %}">Delete</a>
+                <a class="button" href="{% url 'ponderings:pondering-delete' form.instance.id %}">Delete</a>
             {% endif %}
         </form>
     </div>

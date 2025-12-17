@@ -3,33 +3,30 @@
 {% block title %}Ponderings{% endblock %}
 
 {% block content %}
-    <h1 class="main-heading">Ponderings</h1>
-    <div class="container">
-        <div class="col-70">
-            {% if latest_pondering_list %}
-                {% for pondering in latest_pondering_list %}
-                    <div class="pondering">
-                        <blockquote>
-                            <p>{{ pondering.content }}</p>
-                        </blockquote>
-                        <p class="author">{% if pondering.author %}— {{ pondering.author }}{% endif %}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
-                        <span class="time" title="{{ pondering.created_at | date:'r' }}">{{ pondering.created_at | timesince }} ago</span>
-                        <ul class="inline">
-                            <li><a href="{% url 'ponderings:pondering-edit' pondering.id %}">Edit</a></li>
-                            <li><a href="#">Save</a></li>
-                            <li><a href="#">Notes</a></li>
-                        </ul>
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p>No ponderings are available.</p>
-            {% endif %}
-        </div>
-        <div class="col-30">
-            <a href="{% url 'ponderings:pondering-add' %}" class="add btn" href="#">Add Pondering</a>
-            <form action="" method="GET">
-                <input type="search" class="search" name="q" placeholder="Search for words or #tags" value="{{ request.GET.q|default_if_none:'' }}">
-            </form>
-        </div>
+    <h1>Ponderings</h1>
+    <a href="{% url 'ponderings:pondering-add' %}" class="add">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </a>
+    <div class="row">
+        <form action="" method="GET">
+            <input type="search" class="search" name="q" placeholder="Search for words or #tags" value="{{ request.GET.q|default_if_none:'' }}">
+        </form>
     </div>
+    {% if latest_pondering_list %}
+        {% for pondering in latest_pondering_list %}
+            <div class="pondering">
+                <blockquote>
+                    <p>{{ pondering.content }}</p>
+                    <p class="author">{% if pondering.author %}— {{ pondering.author }}{% endif %}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
+                </blockquote>
+                <span class="time meta" title="{{ pondering.created_at | date:'r' }}">{{ pondering.created_at | timesince }} ago</span>
+                <ul class="inline meta">
+                    <li><a href="#">Notes</a></li>
+                    <li><a href="{% url 'ponderings:pondering-edit' pondering.id %}">Edit</a></li>
+                </ul>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No ponderings are available.</p>
+    {% endif %}
 {% endblock %}

@@ -6,7 +6,7 @@
     <div class="pondering">
         <blockquote>
             <p>"{{ pondering.content }}"</p>
+            <p class="author">— {{ pondering.author }}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
         </blockquote>
-        <p class="author">— {{ pondering.author }}{% if pondering.reference %}, <cite>{{ pondering.reference }}</cite>{% endif %}</p>
     </div>
 {% endblock %}

@@ -9,8 +9,8 @@
             <p>Are you sure you want to delete the following pondering?</p>
             <p>{{ object }}</p>
             {{ form }}
-            <button class="danger btn" type="submit">Delete</button>
-            <a class="cancel btn" style="float:none;" href="{% url 'ponderings:pondering-index' %}">Cancel</a>
+            <button type="submit">Delete</button>
+            <a class="button" href="{% url 'ponderings:pondering-edit' pondering.id %}">Cancel</a>
         </form>
     </div>
 {% endblock %}

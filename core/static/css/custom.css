@@ -1,0 +1,105 @@
+/*
+* Palette: https://coolors.co/palette/edae49-d1495b-00798c-30638e-003d5b
+*/
+
+:root {
+	--danger: #bc4b51;
+	--success: #198754;
+}
+
+nav {
+	margin-left: 1em;
+}
+
+nav form button {
+	padding: 0;
+	text-decoration: underline;
+	color: var(--dark);
+	background-color: transparent;
+}
+nav form button:hover {
+	background-color: transparent;
+	color: inherit;
+	text-decoration-color: var(--link);
+}
+
+header {
+	display: flex;
+	align-items: baseline;
+}
+
+button {
+	font-family: inherit;
+	font-size: inherit;
+	height: 40px;
+}
+
+.inline {
+	margin: 0;
+	padding: 0;
+}
+.inline li {
+	display: inline-block;
+}
+.inline li:not(:last-child)::after {
+	content: " \00B7 ";
+}
+
+.pondering {
+	border: 1px solid #333;
+	margin-top: 1em;
+	padding: 1.2em 30px;
+}
+.pondering .author {
+	font-weight: bold;
+}
+.pondering .meta {
+	display: block;
+	text-align: right;
+}
+
+.time {
+	font-style: italic;
+}
+
+.form-group {
+	margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  height: 100%;
+}
+
+#id_private {
+	width: revert;
+}
+
+button + .button {
+  margin-left: 1em;
+}
+
+.add {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: var(--dark);
+  color: var(--light);
+  border-radius: 100%;
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 70%;
+}
+.add svg {
+	display: block;
+}
+.add:hover {
+	opacity: 100%;
+}
